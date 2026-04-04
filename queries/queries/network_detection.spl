@@ -1,2 +1,0 @@
-index=* EventCode=3
-| stats count by SourceIp, DestinationIp
