@@ -25,7 +25,7 @@ An attacker machine (Kali Linux) performed reconnaissance using an **Nmap scan**
 
 ### 🔹 Command Used:
 
-```
+```bash
 nmap -sT <target-ip>
 ```
 
@@ -62,6 +62,7 @@ Multiple failed login attempts were detected using Windows Security logs (**Even
 index=wineventlog EventCode=4625
 | stats count by Account_Name, Source_Network_Address
 | where count > 5
+| sort - count
 ```
 
 ### 🔹 Analysis:
@@ -70,6 +71,15 @@ index=wineventlog EventCode=4625
 * Suspicious behavior identified as brute-force attack
 
 ![Brute Force Detection](images/brute_force_detection.png)
+
+---
+
+## 🧠 MITRE ATT&CK Mapping
+
+| Technique        | ID    | Description                                     |
+| ---------------- | ----- | ----------------------------------------------- |
+| Brute Force      | T1110 | Multiple login attempts using password guessing |
+| Network Scanning | T1046 | Scanning open ports using tools like Nmap       |
 
 ---
 
@@ -92,8 +102,16 @@ splunk-soc-attack-detection-lab/
 │── detections/
 │── logs/
 │── reports/
+│── setup/
+│── mitre-mapping/
 │── project-files/
 ```
+
+---
+
+## 📂 Project Files
+
+* Full project PPT available in `project-files/`
 
 ---
 
